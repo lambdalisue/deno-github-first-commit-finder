@@ -10,53 +10,66 @@ tr:last-child {
 }
 `;
 
+const errorStyle = css`
+color: red;
+`;
+
 export const Commit: FC<{ owner: string; repo: string }> = async (
   { owner, repo },
 ) => {
   if (!owner || !repo) {
     return <div />;
   }
-  const commit = ensure(await findFirstCommit(owner, repo), isCommitData);
-  return (
-    <table class={tableStyle}>
-      <tr>
-        <th>Repository</th>
-        <td>
-          <a href={`https://github.com/${owner}/${repo}`}>
-            {owner}/{repo}
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <th>SHA</th>
-        <td>
-          <a href={commit.html_url}>{commit.sha}</a>
-        </td>
-      </tr>
-      <tr>
-        <th>Message</th>
-        <td>{commit.commit.message}</td>
-      </tr>
-      <tr>
-        <th>Date</th>
-        <td>{new Date(commit.commit.author.date)}</td>
-      </tr>
-      <tr>
-        <th>Author</th>
-        <td>{commit.commit.author.name}</td>
-      </tr>
-      <tr>
-        <th>Committer</th>
-        <td>{commit.commit.author.name}</td>
-      </tr>
-      <tr>
-        <th>Raw JSON</th>
-        <td>
-          <a href={`/api/${owner}/${repo}`}>/api/{owner}/{repo}</a>
-        </td>
-      </tr>
-    </table>
-  );
+  try {
+    const commit = ensure(await findFirstCommit(owner, repo), isCommitData);
+    return (
+      <table class={tableStyle}>
+        <tr>
+          <th>Repository</th>
+          <td>
+            <a href={`https://github.com/${owner}/${repo}`}>
+              {owner}/{repo}
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <th>SHA</th>
+          <td>
+            <a href={commit.html_url}>{commit.sha}</a>
+          </td>
+        </tr>
+        <tr>
+          <th>Message</th>
+          <td>{commit.commit.message}</td>
+        </tr>
+        <tr>
+          <th>Date</th>
+          <td>{new Date(commit.commit.author.date)}</td>
+        </tr>
+        <tr>
+          <th>Author</th>
+          <td>{commit.commit.author.name}</td>
+        </tr>
+        <tr>
+          <th>Committer</th>
+          <td>{commit.commit.author.name}</td>
+        </tr>
+        <tr>
+          <th>Raw JSON</th>
+          <td>
+            <a href={`/api/${owner}/${repo}`}>/api/{owner}/{repo}</a>
+          </td>
+        </tr>
+      </table>
+    );
+  } catch (e) {
+    console.warn(`Failed to find the first commit of ${owner}/${repo}`, e);
+    return (
+      <div class={errorStyle}>
+        Failed to find the first commit of {owner}/{repo}
+      </div>
+    );
+  }
 };
 
 export type CommitData = {
