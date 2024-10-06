@@ -28,7 +28,6 @@ app.get("/", (c) => {
   const repo = c.req.query("repo") ?? "";
   return c.html(
     <Layout>
-      <h1>GitHub First Commit Finder</h1>
       <form
         method="get"
         class={formStyle}
