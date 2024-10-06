@@ -1,7 +1,17 @@
 import { Hono } from "hono";
+import { cache } from "hono/cache";
 import { findFirstCommit } from "../domain/service.ts";
 
 const app = new Hono();
+
+app.get(
+  "*",
+  cache({
+    cacheName: "github-first-commit-finder-api",
+    cacheControl: "max-age=3600",
+    wait: true,
+  }),
+);
 
 app.get("/:owner/:repo", async (c) => {
   const { owner, repo } = c.req.param();

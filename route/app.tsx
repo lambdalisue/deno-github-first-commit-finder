@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { cache } from "hono/cache";
 import { css } from "hono/css";
 
 import { Layout } from "./_layout.tsx";
@@ -22,6 +23,15 @@ label {
   margin-bottom: 0;
 }
 `;
+
+app.get(
+  "*",
+  cache({
+    cacheName: "github-first-commit-finder",
+    cacheControl: "max-age=3600",
+    wait: true,
+  }),
+);
 
 app.get("/", (c) => {
   const owner = c.req.query("owner") ?? "";
