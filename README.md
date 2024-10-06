@@ -6,15 +6,16 @@ Find the first commit of a GitHub repository.
 
 > [!WARNING]
 >
-> The service uses GitHub's REST API without authentication.
-> So the rate limit is 60 requests per hour and I couln't be bothered to implement error handling.
+> The service uses GitHub's REST API without authentication. So the rate limit
+> is 60 requests per hour and I couln't be bothered to implement error handling.
 > PR to fix this issue is welcome.
 >
 > https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28
 
 ## Usage
 
-Access to https://github-first-commit-finder.deno.dev or run the following command
+Access to https://github-first-commit-finder.deno.dev or run the following
+command
 
 ```
 curl https://github-first-commit-finder.deno.dev/api/{owner}/{repo}
