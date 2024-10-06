@@ -1,0 +1,23 @@
+{
+  "deploy": {
+    "project": "a8910a21-9fa3-4815-ab24-513df99397f1",
+    "exclude": [
+      "**/node_modules"
+    ],
+    "include": [],
+    "entrypoint": "main.ts"
+  },
+  "imports": {
+    "@core/errorutil": "jsr:@core/errorutil@^1.2.0",
+    "@core/unknownutil": "jsr:@core/unknownutil@^4.3.0",
+    "hono": "jsr:@hono/hono@^4.6.3"
+  },
+  "tasks": {
+    "start": "deno run --allow-net main.ts",
+    "check": "deno check **/*.ts"
+  },
+  "compilerOptions": {
+    "jsx": "precompile",
+    "jsxImportSource": "hono/jsx"
+  }
+}

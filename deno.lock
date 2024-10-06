@@ -1,0 +1,44 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "jsr:@core/errorutil@^1.2.0": "jsr:@core/errorutil@1.2.0",
+      "jsr:@core/iterutil": "jsr:@core/iterutil@0.8.0",
+      "jsr:@core/unknownutil@^4.0.0": "jsr:@core/unknownutil@4.3.0",
+      "jsr:@core/unknownutil@^4.3.0": "jsr:@core/unknownutil@4.3.0",
+      "jsr:@hono/hono@^4.6.3": "jsr:@hono/hono@4.6.3",
+      "npm:create-hono": "npm:create-hono@0.13.1"
+    },
+    "jsr": {
+      "@core/errorutil@1.2.0": {
+        "integrity": "038293a3e411bf1c8e58631110ea11a546d1f30d286c36c672a85cfd4832fa4a",
+        "dependencies": [
+          "jsr:@core/unknownutil@^4.0.0"
+        ]
+      },
+      "@core/iterutil@0.8.0": {
+        "integrity": "7670be342ec84110d7aa5b709e8199f73acf417c94646b6e74b704caef454b18"
+      },
+      "@core/unknownutil@4.3.0": {
+        "integrity": "538a3687ffa81028e91d148818047df219663d0da671d906cecd165581ae55cc"
+      },
+      "@hono/hono@4.6.3": {
+        "integrity": "a1f5a18cd12a0db54755b0461dd5a4e2d93a6f85403073eb710103eacc42daf3"
+      }
+    },
+    "npm": {
+      "create-hono@0.13.1": {
+        "integrity": "sha512-KsvxqH7j5VNsJXvVRC/jaw3jkFcEp8ckQ9L87YUihbr46Nq7lg0vee/Hgk4x1BEsabAVX4oKkHii3xZSFJntiQ==",
+        "dependencies": {}
+      }
+    }
+  },
+  "remote": {},
+  "workspace": {
+    "dependencies": [
+      "jsr:@core/errorutil@^1.2.0",
+      "jsr:@core/unknownutil@^4.3.0",
+      "jsr:@hono/hono@^4.6.3"
+    ]
+  }
+}
